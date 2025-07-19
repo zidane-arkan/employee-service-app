@@ -20,26 +20,26 @@ Contoh Tabel Awal sebagai berikut:
 
 | ID_Karyawan | Nama_Karyawan | Divisi | Jabatan        | Gaji      |
 | ----------- | ------------- | ------ | -------------- | --------- |
-| 1           | Mei           | IT     | Frontend Dev   | 7.000.000 |
-| 2           | Jupei         | IT     | Backend Dev    | 8.500.000 |
-| 3           | Vira          | HRD    | HR Specialist  | 6.000.000 |
-| 4           | Nano          | IT     | DevOps         | 6.500.000 |
-| 5           | Mais          | R&D    | R&D Staff      | 5.500.000 |
-| 6           | Pumkin        | CS     | Product Expert | 7.500.000 |
+| 1           | Mei           | IT     | Frontend Dev   | 7000000   |
+| 2           | Jupei         | IT     | Backend Dev    | 8500000   |
+| 3           | Vira          | HRD    | HR Specialist  | 6000000   |
+| 4           | Nano          | IT     | DevOps         | 6500000   |
+| 5           | Mais          | R&D    | R&D Staff      | 5500000   |
+| 6           | Pumkin        | CS     | Product Expert | 7500000   |
 
 > **Masalah:**
 
 - Nama divisi dan jabatan sering diulang
 - Gaji untuk jabatan yg sama juga diulang
-- Susah dikelola jika ada perubahan jabatan atau gaji
+- Sulit dikelola jika ada perubahan jabatan atau gaji
 
 ---
 
 ## Contoh Setelah Normalisasi (hingga 3NF)
 
-### 1️⃣ Tabel `Karyawan`
+### 1️⃣ Tabel `Employee`
 
-| ID_Karyawan | Nama_Karyawan  | ID_Divisi | ID_Jabatan |
+| ID          | Name           | ID_Div    | ID_Position|
 | ----------- | -------------  | --------- | ---------- |
 | 1           | Mei            | 1         | 1          |
 | 2           | Jupei          | 1         | 2          |
@@ -50,9 +50,9 @@ Contoh Tabel Awal sebagai berikut:
 
 ---
 
-### 2️⃣ Tabel `Divisi`
+### 2️⃣ Tabel `Division`
 
-| ID_Divisi | Nama_Divisi |
+| ID        | Name        |
 | --------- | ----------- |
 | 1         | IT          |
 | 2         | HRD         |
@@ -62,16 +62,16 @@ Contoh Tabel Awal sebagai berikut:
 
 ---
 
-### 3️⃣ Tabel `Jabatan`
+### 3️⃣ Tabel `Position`
 
-| ID_Jabatan | Nama_Jabatan   | Gaji      |
+| ID         | Name           | Salary    |
 | ---------- | -------------  | --------- |
-| 1          | Frontend Dev   | 7.000.000 |
-| 2          | Backend Dev    | 7.500.000 |
-| 3          | DevOps         | 6.000.000 |
-| 4          | HR Specialist  | 6.000.000 |
-| 5          | R&D Staff      | 6.000.000 |
-| 6          | Product Expert | 6.000.000 |
+| 1          | Frontend Dev   | 7000000   |
+| 2          | Backend Dev    | 8500000   |
+| 3          | DevOps         | 6500000   |
+| 4          | HR Specialist  | 6000000   |
+| 5          | R&D Staff      | 5500000   |
+| 6          | Product Expert | 7500000   |
 
 ---
 
@@ -79,7 +79,6 @@ Contoh Tabel Awal sebagai berikut:
 
 - Data lebih konsisten (tidak duplikat)
 - Gaji cukup diubah di tabel jabatan, tidak di banyak baris
-- Struktur rapi dan siap untuk dikembangkan ke sistem ESS
 
 ---
 

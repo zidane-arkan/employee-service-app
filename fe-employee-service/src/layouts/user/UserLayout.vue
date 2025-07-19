@@ -18,19 +18,20 @@ import { RouterView } from "vue-router";
         <img src="../../assets/images/logos/logo.svg" class="flex shrink-0" alt="logo" />
       </div>
       <div class="flex items-center gap-3">
-        <RouterLink to="/login" class="cursor-pointer">
-          <div
-            class="flex items-center gap-3 w-fit rounded-full border p-[14px_20px] transition-all duration-300 hover:bg-[#662FFF] hover:border-[#8661EE] hover:shadow-[-10px_-6px_10px_0_#7F33FF_inset] bg-[#070B24] border-[#24283E] shadow-[-10px_-6px_10px_0_#181A35_inset]"
-          >
-            <span class="font-semibold text-white">My Dashboard</span>
-          </div>
+        <RouterLink
+          to="/login"
+          active-class="bg-[#662FFF] border-[#8661EE] shadow-[-10px_-6px_10px_0_#7F33FF_inset]"
+          class="cursor-pointer flex items-center gap-3 w-fit rounded-full border p-[14px_20px] transition-all duration-300 hover:bg-[#662FFF] hover:border-[#8661EE] hover:shadow-[-10px_-6px_10px_0_#7F33FF_inset] bg-[#070B24] border-[#24283E] "
+        >
+          <span class="font-semibold text-white">My Dashboard</span>
         </RouterLink>
-        <RouterLink to="/register" class="cursor-pointer">
-          <div
-            class="flex items-center gap-3 w-fit rounded-full border p-[14px_20px] transition-all duration-300 hover:bg-[#662FFF] hover:border-[#8661EE] hover:shadow-[-10px_-6px_10px_0_#7F33FF_inset] bg-[#662FFF] border-[#8661EE] shadow-[-10px_-6px_10px_0_#7F33FF_inset]"
-          >
-            <span class="font-semibold text-white">Sign Up</span>
-          </div>
+
+        <RouterLink
+          to="/register"
+          active-class="bg-[#662FFF] border-[#8661EE] shadow-[-10px_-6px_10px_0_#7F33FF_inset]"
+          class="cursor-pointer flex items-center gap-3 w-fit rounded-full border p-[14px_20px] transition-all duration-300 hover:bg-[#662FFF] hover:border-[#8661EE] hover:shadow-[-10px_-6px_10px_0_#7F33FF_inset] bg-[#070B24] border-[#24283E] "
+        >
+          <span class="font-semibold text-white">Sign Up</span>
         </RouterLink>
       </div>
     </nav>
