@@ -1,5 +1,5 @@
 <script setup>
-import PrimaryHeader from "../../components/PrimaryHeader.vue";
+import { RouterView } from "vue-router";
 import Sidebar from "../../components/Sidebar.vue";
 import Topbar from "../../components/Topbar.vue";
 </script>

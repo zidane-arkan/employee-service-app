@@ -1,0 +1,82 @@
+<script setup>
+import { onMounted, ref, computed } from "vue";
+import { useRoute } from "vue-router";
+import { getDivisionById } from "../../../services/divisionService";
+import PrimaryHeader from "../../../components/PrimaryHeader.vue";
+import EditButton from "../../../components/buttons/EditButton.vue";
+
+const route = useRoute();
+const division = ref(null);
+
+const editLink = computed(() => {
+  if (division.value) {
+    return `/admin/divisions/edit/?id=${division.value.documentId}`;
+  }
+  return "";
+});
+
+onMounted(async () => {
+  const id = route.query.id;
+  division.value = await getDivisionById(id);
+  console.log(division.value);
+});
+</script>
+
+<template>
+  <div>
+    <PrimaryHeader title="Detail Division" subtitle="See a part of your company">
+      <EditButton :linkTo="editLink" buttonText="Edit Division" />
+    </PrimaryHeader>
+    <div
+      v-if="division"
+      class="flex flex-col w-[550px] rounded-[30px] p-[30px] gap-[30px] bg-[#F8FAFB]"
+    >
+      <div class="flex flex-col gap-[10px]">
+        <label for="name" class="font-semibold">Current Division Name</label>
+        <div
+          class="flex items-center w-full rounded-full border border-[#CFDBEF] gap-3 px-5 transition-all duration-300 focus-within:ring-2 focus-within:ring-[#662FFF]"
+        >
+          <img
+            src="../../../assets/images/icons/note-favorite-black.svg"
+            class="w-6 h-6"
+            alt="icon"
+          />
+          <input
+            type="text"
+            name="name"
+            id="name"
+            :value="division.name"
+            class="appearance-none outline-none w-full py-3 font-semibold placeholder:font-normal placeholder:text-[#838C9D] !bg-transparent"
+            placeholder="Division name"
+            disabled
+          />
+        </div>
+      </div>
+      <div class="flex items-center gap-[14px]">
+        <RouterLink
+          to="/admin/divisions"
+          class="w-full rounded-full border border-[#060A23] p-[14px_20px] text-center font-semibold text-nowrap"
+        >
+          Cancel
+        </RouterLink>
+        <!-- <button
+          type="submit"
+          class="w-full rounded-full p-[14px_20px] font-semibold text-[#FFFFFF] bg-[#662FFF] text-nowrap"
+        >
+          Add Now
+        </button> -->
+      </div>
+    </div>
+    <div v-else>loading...</div>
+  </div>
+</template>
+
+<script>
+export default {
+  setup() {
+    return {};
+  },
+};
+</script>
+
+<style lang="scss" scoped></style>

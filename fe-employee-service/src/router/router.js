@@ -5,11 +5,19 @@ import RegisterView from "../pages/auth/RegisterView.vue";
 import LoginView from "../pages/auth/LoginView.vue";
 import AdminLayout from "../layouts/authenticated/AdminLayout.vue";
 import HomeView from "../pages/admin/home/HomeView.vue";
+// EMPLOYEE
 import EmployeeLayout from "../layouts/authenticated/EmployeeLayout.vue";
 import EmployeeView from "../pages/admin/employee/EmployeeView.vue";
 import EmployeeCreate from "../pages/admin/employee/EmployeeCreate.vue";
 import EmployeeEdit from "../pages/admin/employee/EmployeeEdit.vue";
 import EmployeeDetail from "../pages/admin/employee/EmployeeDetail.vue";
+// DIVISION
+import DivisionLayout from "../layouts/authenticated/DivisionLayout.vue";
+import DivisionView from "../pages/admin/division/DivisionView.vue";
+import DivisionCreate from "../pages/admin/division/DivisionCreate.vue";
+import DivisionEdit from "../pages/admin/division/DivisionEdit.vue";
+import DivisionDetail from "../pages/admin/division/DivisionDetail.vue";
+
 const routes = [
   {
     path: "/",
@@ -60,6 +68,28 @@ const routes = [
           {
             path: "detail",
             component: EmployeeDetail,
+          },
+        ],
+      },
+      {
+        path: "divisions",
+        component: DivisionLayout,
+        children: [
+          {
+            path: "",
+            component: DivisionView,
+          },
+          {
+            path: "create",
+            component: DivisionCreate,
+          },
+          {
+            path: "edit",
+            component: DivisionEdit,
+          },
+          {
+            path: "detail",
+            component: DivisionDetail,
           },
         ],
       },

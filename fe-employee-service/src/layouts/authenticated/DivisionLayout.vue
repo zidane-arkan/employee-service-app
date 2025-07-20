@@ -4,7 +4,7 @@ import { RouterView } from "vue-router";
 
 <template>
   <section>
-    <!-- EMPLOYEE CONTENT -->
+    <!-- DIVISION CONTENT -->
     <RouterView />
   </section>
 </template>

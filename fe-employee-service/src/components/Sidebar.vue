@@ -2,7 +2,7 @@
   <aside
     class="sidebar-container fixed h-[calc(100vh-20px)] w-full max-w-[280px] my-[10px] ml-[10px] bg-[#060A23] overflow-hidden flex flex-1 rounded-[20px]"
   >
-    <div class="scroll-container flex w-full overflow-y-scroll hide-scrollbar">
+    <div class="flex w-full overflow-y-scroll scroll-container hide-scrollbar">
       <nav class="flex flex-col w-full h-fit p-[30px] gap-10 z-10">
         <RouterLink to="/admin">
           <img src="../assets/images/logos/logo.svg" alt="logo" />
@@ -39,31 +39,31 @@
             </RouterLink>
           </li>
           <li>
-            <RouterLink to="#">
-              <div
-                class="flex items-center gap-3 w-full rounded-full border p-[14px_20px] transition-all duration-300 hover:bg-[#662FFF] hover:border-[#8661EE] hover:shadow-[-10px_-6px_10px_0_#7F33FF_inset] bg-[#070B24] border-[#24283E] shadow-[-10px_-6px_10px_0_#181A35_inset]"
-              >
-                <img
-                  src="../assets/images/icons/crown-white.svg"
-                  class="w-6 h-6"
-                  alt="icon"
-                />
-                <span class="font-semibold text-white">Division</span>
-              </div>
+            <RouterLink
+              active-class="bg-[#662FFF] border-[#8661EE]"
+              class="flex items-center gap-3 w-full rounded-full border p-[14px_20px] transition-all duration-300 hover:bg-[#662FFF] hover:border-[#8661EE] hover:shadow-[-10px_-6px_10px_0_#7F33FF_inset] bg-[#070B24] border-[#24283E] shadow-[-10px_-6px_10px_0_#181A35_inset]"
+              to="/admin/divisions"
+            >
+              <img
+                src="../assets/images/icons/crown-white.svg"
+                class="w-6 h-6"
+                alt="icon"
+              />
+              <span class="font-semibold text-white">Division</span>
             </RouterLink>
           </li>
           <li>
-            <RouterLink to="manage-student.html">
-              <div
-                class="flex items-center gap-3 w-full rounded-full border p-[14px_20px] transition-all duration-300 hover:bg-[#662FFF] hover:border-[#8661EE] hover:shadow-[-10px_-6px_10px_0_#7F33FF_inset] bg-[#070B24] border-[#24283E] shadow-[-10px_-6px_10px_0_#181A35_inset]"
-              >
-                <img
-                  src="../assets/images/icons/note-favorite-white.svg"
-                  class="w-6 h-6"
-                  alt="icon"
-                />
-                <span class="font-semibold text-white">Position</span>
-              </div>
+            <RouterLink
+              active-class="bg-[#662FFF] border-[#8661EE]"
+              class="flex items-center gap-3 w-full rounded-full border p-[14px_20px] transition-all duration-300 hover:bg-[#662FFF] hover:border-[#8661EE] hover:shadow-[-10px_-6px_10px_0_#7F33FF_inset] bg-[#070B24] border-[#24283E] shadow-[-10px_-6px_10px_0_#181A35_inset]"
+              to="/admin/positions"
+            >
+              <img
+                src="../assets/images/icons/note-favorite-white.svg"
+                class="w-6 h-6"
+                alt="icon"
+              />
+              <span class="font-semibold text-white">Position</span>
             </RouterLink>
           </li>
         </ul>
@@ -88,7 +88,7 @@
     </div>
     <img
       src="../assets/images/backgrounds/sidebar-glow.png"
-      class="absolute object-contain object-bottom bottom-0"
+      class="absolute bottom-0 object-contain object-bottom"
       alt="background"
     />
   </aside>

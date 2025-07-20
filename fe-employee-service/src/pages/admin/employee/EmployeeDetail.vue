@@ -69,8 +69,8 @@ onMounted(async () => {
             class="appearance-none outline-none w-full py-3 px-2 -mx-2 font-semibold placeholder:font-normal placeholder:text-[#838C9D] !bg-transparent"
             disabled
           >
-            <option :value="employee.division.name" default>
-              {{ employee.division.name }}
+            <option :value="employee.division?.name || 'N/A'" default>
+              {{ employee.division?.name || 'N/A' }}
             </option>
           </select>
         </div>
@@ -92,8 +92,8 @@ onMounted(async () => {
             class="appearance-none outline-none w-full py-3 px-2 -mx-2 font-semibold placeholder:font-normal placeholder:text-[#838C9D] !bg-transparent"
             disabled
           >
-            <option :value="employee.position.name" default>
-              {{ employee.position.name }}
+            <option :value="employee.position?.name || 'N/A'" default>
+              {{ employee.position?.name || 'N/A'}}
             </option>
           </select>
         </div>
