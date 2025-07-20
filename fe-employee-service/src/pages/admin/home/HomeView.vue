@@ -1,89 +1,77 @@
 <script setup>
 import PrimaryHeader from "../../../components/PrimaryHeader.vue";
+import EmployeeDivisionDonut from "./EmployeeDivisionDonut.vue";
+import EmployeePositionBar from "./EmployeePositionBar.vue";
+import AverageSalaryDivisionBar from "./AverageSalaryDivisionBar.vue";
+import SalaryPerPositionBar from "./SalaryPerPositionBar.vue";
 </script>
 
 <template>
   <div>
     <PrimaryHeader title="Home" subtitle="Grow your company quickly" />
-    <section id="Stats" class="flex rounded-[30px] p-[30px] gap-[30px] bg-[#F8FAFB]">
-      <div class="grid grid-cols-2 w-[500px] gap-[30px]">
+    <section
+      id="Stats"
+      class="flex flex-col rounded-[30px] p-[30px] gap-[30px] bg-[#F8FAFB]"
+    >
+      <div class="grid grid-cols-2 w-full gap-[30px]">
+        <!-- [CHART 3] -->
         <div
           class="flex flex-col rounded-[20px] p-5 gap-5 bg-white shadow-[0_4px_4px_0_#E0E2EF]"
         >
-          <img
-            src="../../../assets/images/icons/profile-2user-purple.svg"
-            class="w-[46px] h-[46px]"
-            alt="icon"
-          />
-          <div>
-            <p class="font-extrabold text-2xl leading-[36px]">189,498</p>
-            <p class="text-[#838C9D]">Total Students</p>
+          <div class="flex items-center gap-2">
+            <img
+              src="../../../assets/images/icons/video-play-purple.svg"
+              class="w-[22px] h-[22px]"
+              alt="icon"
+            />
+            <p class="text-[#838C9D] pt-[2px]">Rata-rata Gaji per Divisi</p>
           </div>
+          <AverageSalaryDivisionBar />
         </div>
+        <!-- DONUT [CHART 4] -->
         <div
           class="flex flex-col rounded-[20px] p-5 gap-5 bg-white shadow-[0_4px_4px_0_#E0E2EF]"
         >
-          <img
-            src="../../../assets/images/icons/note-favorite-purple.svg"
-            class="w-[46px] h-[46px]"
-            alt="icon"
-          />
-          <div>
-            <p class="font-extrabold text-2xl leading-[36px]">7,221</p>
-            <p class="text-[#838C9D]">Total Courses</p>
+          <div class="flex items-center gap-2">
+            <img
+              src="../../../assets/images/icons/note-purple.svg"
+              class="w-[22px] h-[22px]"
+              alt="icon"
+            />
+            <p class="text-[#838C9D] pt-[2px]">Jumlah Pegawai per Divisi</p>
           </div>
-        </div>
-        <div
-          class="flex flex-col rounded-[20px] p-5 gap-5 bg-white shadow-[0_4px_4px_0_#E0E2EF]"
-        >
-          <img
-            src="../../../assets/images/icons/video-play-purple.svg"
-            class="w-[46px] h-[46px]"
-            alt="icon"
-          />
-          <div>
-            <p class="font-extrabold text-2xl leading-[36px]">893,891</p>
-            <p class="text-[#838C9D]">Video Content</p>
-          </div>
-        </div>
-        <div
-          class="flex flex-col rounded-[20px] p-5 gap-5 bg-white shadow-[0_4px_4px_0_#E0E2EF]"
-        >
-          <img
-            src="../../../assets/images/icons/note-purple.svg"
-            class="w-[46px] h-[46px]"
-            alt="icon"
-          />
-          <div>
-            <p class="font-extrabold text-2xl leading-[36px]">12,812</p>
-            <p class="text-[#838C9D]">Text Content</p>
-          </div>
+          <EmployeeDivisionDonut />
         </div>
       </div>
-      <div
-        class="flex flex-col flex-1 rounded-[20px] p-5 gap-5 bg-white shadow-[0_4px_4px_0_#E0E2EF]"
-      >
+      <div class="grid grid-cols-2 w-full gap-[30px]">
+        <!-- [CHART 1] -->
         <div
-          class="relative flex items-center justify-center shrink-0 m-auto rounded-full w-[230px] h-[230px]"
+          class="flex flex-col rounded-[20px] p-5 gap-5 bg-white shadow-[0_4px_4px_0_#E0E2EF]"
         >
-          <div id="piechart" class="absolute rounded-full w-[230px] h-[230px] z-10"></div>
-          <div
-            class="flex justify-center items-center w-[130px] h-[130px] rounded-full bg-white z-10"
-          >
-            <p class="w-fit h-fit text-center font-bold text-lg leading-[27px]">
-              Our<br />Rapport
-            </p>
+          <div class="flex items-center gap-2">
+            <img
+              src="../../../assets/images/icons/note-purple.svg"
+              class="w-[22px] h-[22px]"
+              alt="icon"
+            />
+            <p class="text-[#838C9D] pt-[2px]">Distribusi Karyawan per Posisi</p>
           </div>
+          <EmployeePositionBar />
         </div>
-        <div class="flex flex-col gap-[10px]">
-          <div class="flex items-center gap-3">
-            <div class="w-5 h-5 rounded-full bg-[#662FFF]"></div>
-            <p class="font-semibold text-sm leading-[21px]">Completed 75%</p>
+
+        <!-- [CHART 2] -->
+        <div
+          class="flex flex-col rounded-[20px] p-5 gap-5 bg-white shadow-[0_4px_4px_0_#E0E2EF]"
+        >
+          <div class="flex items-center gap-2">
+            <img
+              src="../../../assets/images/icons/note-favorite-purple.svg"
+              class="w-[22px] h-[22px]"
+              alt="icon"
+            />
+            <p class="text-[#838C9D]">Gaji per Posisi</p>
           </div>
-          <div class="flex items-center gap-3">
-            <div class="w-5 h-5 rounded-full bg-[#C2ACFF]"></div>
-            <p class="font-semibold text-sm leading-[21px]">Not Completed 25%</p>
-          </div>
+          <SalaryPerPositionBar />
         </div>
       </div>
     </section>
@@ -98,8 +86,4 @@ export default {
 };
 </script>
 
-<style lang="css" scoped>
-#piechart {
-  background: conic-gradient(#c2acff 0% 25%, #662fff 25% 100%);
-}
-</style>
+<style lang="css" scoped></style>
