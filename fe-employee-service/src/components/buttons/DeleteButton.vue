@@ -1,11 +1,10 @@
 <template>
-  <div class="p-20 text-blue-500">
-    <h1>Home View</h1>
-  </div>
+  <div></div>
 </template>
 
 <script>
 export default {
+  name: "DeleteButton",
   setup() {
     return {};
   },

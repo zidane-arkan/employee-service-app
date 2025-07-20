@@ -3,7 +3,13 @@ import { createWebHistory, createRouter } from "vue-router";
 import UserLayout from "../layouts/user/UserLayout.vue";
 import RegisterView from "../pages/auth/RegisterView.vue";
 import LoginView from "../pages/auth/LoginView.vue";
-import HomeView from "../pages/admin/HomeView.vue";
+import AdminLayout from "../layouts/authenticated/AdminLayout.vue";
+import HomeView from "../pages/admin/home/HomeView.vue";
+import EmployeeLayout from "../layouts/authenticated/EmployeeLayout.vue";
+import EmployeeView from "../pages/admin/employee/EmployeeView.vue";
+import EmployeeCreate from "../pages/admin/employee/EmployeeCreate.vue";
+import EmployeeEdit from "../pages/admin/employee/EmployeeEdit.vue";
+import EmployeeDetail from "../pages/admin/employee/EmployeeDetail.vue";
 const routes = [
   {
     path: "/",
@@ -28,8 +34,36 @@ const routes = [
   },
   {
     path: "/admin",
-    name: "AdminView",
-    component: HomeView,
+    component: AdminLayout,
+    children: [
+      {
+        path: "",
+        name: "HomeView",
+        component: HomeView,
+      },
+      {
+        path: "employees",
+        component: EmployeeLayout,
+        children: [
+          {
+            path: "",
+            component: EmployeeView,
+          },
+          {
+            path: "create",
+            component: EmployeeCreate,
+          },
+          {
+            path: "edit",
+            component: EmployeeEdit,
+          },
+          {
+            path: "detail",
+            component: EmployeeDetail,
+          },
+        ],
+      },
+    ],
   },
 ];
 
