@@ -6,6 +6,8 @@ import { getEmployeeById } from "../../../services/employeeService";
 import { getDivisions } from "../../../services/divisionService";
 import { getPositions } from "../../../services/positionService";
 import PrimaryHeader from "../../../components/PrimaryHeader.vue";
+import SuccessModal from "../../../components/modals/SuccessModal.vue";
+import ErrorModal from "../../../components/modals/ErrorModal.vue";
 
 const route = useRoute();
 const router = useRouter();
@@ -15,6 +17,10 @@ const employee = ref(null);
 const divisions = ref([]);
 const positions = ref([]);
 
+const showModal = ref(false);
+const showErrorModal = ref(false);
+const errMessage = ref("");
+
 const form = ref({
   name: "",
   division: null,
@@ -22,12 +28,26 @@ const form = ref({
 });
 
 const handleUpdate = async () => {
-  await updateEmployee(id.value, {
-    name: form.value.name,
-    position: form.value.position,
-    division: form.value.division,
-  });
-  router.push("/admin/employees");
+  try {
+    await updateEmployee(id.value, {
+      name: form.value.name,
+      position: form.value.position,
+      division: form.value.division,
+    });
+
+    showModal.value = true;
+
+    setTimeout(() => {
+      showModal.value = false;
+      router.push("/admin/employees");
+    }, 1000);
+  } catch (error) {
+    console.error("Error Updating employee:", error);
+    errMessage.value =
+      error.response?.data?.error?.message ||
+      "Failed to update employee. Please Check Your Input!";
+    showErrorModal.value = true;
+  }
 };
 
 onMounted(async () => {
@@ -50,6 +70,12 @@ onMounted(async () => {
 
 <template>
   <div>
+    <SuccessModal :visible="showModal" />
+    <ErrorModal
+      :visible="showErrorModal"
+      :message="errMessage"
+      @close="showErrorModal = false"
+    />
     <PrimaryHeader title="Edit Employee" subtitle="Update the talent of your employee" />
     <form
       v-if="employee"
@@ -145,13 +171,13 @@ onMounted(async () => {
       <div class="flex items-center gap-[14px]">
         <RouterLink
           to="/admin/employees"
-          class="w-full rounded-full border border-[#060A23] p-[14px_20px] text-center font-semibold text-nowrap"
+          class="cursor-pointer w-full rounded-full border border-[#060A23] p-[14px_20px] text-center font-semibold text-nowrap"
         >
           Cancel
         </RouterLink>
         <button
           type="submit"
-          class="w-full rounded-full p-[14px_20px] font-semibold text-[#FFFFFF] bg-[#662FFF] text-nowrap"
+          class="cursor-pointer w-full rounded-full p-[14px_20px] font-semibold text-[#FFFFFF] bg-[#662FFF] text-nowrap"
         >
           Update Now
         </button>

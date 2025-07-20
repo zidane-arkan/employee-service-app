@@ -5,8 +5,14 @@ import { getDivisions } from "../../../services/divisionService";
 import { getPositions } from "../../../services/positionService";
 import { useRouter } from "vue-router";
 import PrimaryHeader from "../../../components/PrimaryHeader.vue";
+import SuccessModal from "../../../components/modals/SuccessModal.vue";
+import ErrorModal from "../../../components/modals/ErrorModal.vue";
 
 const router = useRouter();
+
+const showModal = ref(false);
+const showErrorModal = ref(false);
+const errMessage = ref("");
 
 const divisions = ref([]);
 const positions = ref([]);
@@ -18,13 +24,26 @@ const form = ref({
 });
 
 const handleEmployeeSubmit = async () => {
-  await createEmployee({
-    name: form.value.name,
-    position: form.value.position,
-    division: form.value.division,
-  });
+  try {
+    await createEmployee({
+      name: form.value.name,
+      position: form.value.position,
+      division: form.value.division,
+    });
 
-  router.push("/admin/employees");
+    showModal.value = true;
+
+    setTimeout(() => {
+      showModal.value = false;
+      router.push("/admin/employees");
+    }, 1000);
+  } catch (error) {
+    console.error("Error creating employee:", error);
+    errMessage.value =
+      error.response?.data?.error?.message ||
+      "Failed to add new employee. Please Check Your Input!";
+    showErrorModal.value = true;
+  }
 };
 
 onMounted(async () => {
@@ -35,11 +54,19 @@ onMounted(async () => {
 
 <template>
   <div>
+    <SuccessModal :visible="showModal" />
+    <ErrorModal
+      :visible="showErrorModal"
+      :message="errMessage"
+      @close="showErrorModal = false"
+    />
+
     <PrimaryHeader title="Add New Employee" subtitle="Create new future for company" />
     <form
       @submit.prevent="handleEmployeeSubmit"
-      class="flex flex-col w-[550px] rounded-[30px] p-[30px] gap-[30px] bg-[#F8FAFB]"
+      class="flex flex-col w-[600px] rounded-[30px] p-[30px] gap-[40px] bg-[#F8FAFB]"
     >
+      <!-- FULLNAME INPUT -->
       <div class="flex flex-col gap-[10px]">
         <label for="name" class="font-semibold">Full Name</label>
         <div

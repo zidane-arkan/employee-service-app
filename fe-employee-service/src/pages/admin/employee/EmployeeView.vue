@@ -7,20 +7,36 @@ import PrimaryHeader from "../../../components/PrimaryHeader.vue";
 import CreateButton from "../../../components/buttons/CreateButton.vue";
 import EditButton from "../../../components/buttons/EditButton.vue";
 import DeleteModal from "../../../components/DeleteModal.vue";
+import Pagination from "../../../components/Pagination.vue";
 
 const employees = ref([]);
 const showModal = ref(false);
 const selectedId = ref(null);
 
-const fetchEmployees = async () => {
-  employees.value = await getEmployees();
+const currentPage = ref(1);
+const pageSize = 6;
+const totalPages = ref(1);
+
+const fetchEmployees = async (page = 1) => {
+  const res = await getEmployees(page, pageSize);
+  employees.value = res.data;
+  totalPages.value = res.meta.pagination.pageCount;
+  currentPage.value = res.meta.pagination.page;
 };
 
 const confirmDelete = async (id) => {
   await deleteEmployee(id);
   showModal.value = false;
   selectedId.value = null;
-  await fetchEmployees();
+  let pageToFetch = currentPage.value;
+  if (
+    employees.value.length === 1 &&
+    currentPage.value > 1 &&
+    totalPages.value === currentPage.value
+  ) {
+    pageToFetch = currentPage.value - 1;
+  }
+  await fetchEmployees(pageToFetch);
 };
 
 const cancelDelete = () => {
@@ -34,7 +50,7 @@ const openDeleteModal = (id) => {
 };
 
 onMounted(async () => {
-  employees.value = await getEmployees();
+  await fetchEmployees(currentPage.value);
 });
 </script>
 
@@ -57,11 +73,11 @@ onMounted(async () => {
       <div
         v-for="employee in employees"
         :key="employee.id"
-        class="card flex items-center gap-5"
+        class="flex items-center gap-5 card"
       >
         <div class="relative rounded-[20px] bg-blue-500 flex shrink-0 w-20 h-20">
           <div class="overflow-hidden">
-            <div class="w-full h-full object-cover" />
+            <div class="object-cover w-full h-full" />
           </div>
         </div>
         <div class="w-full">
@@ -82,7 +98,7 @@ onMounted(async () => {
             </div>
           </div>
         </div>
-        <div class="flex justify-end items-center gap-3">
+        <div class="flex items-center justify-end gap-3">
           <EditButton
             :linkTo="`employees/edit/?id=${employee.documentId}`"
             buttonText="Edit Employee"
@@ -96,26 +112,11 @@ onMounted(async () => {
         </div>
       </div>
       <!-- PAGINATION -->
-      <div id="Pagination" class="flex items-center gap-3">
-        <button
-          type="button"
-          class="flex shrink-0 w-9 h-9 rounded-full items-center justify-center text-center transition-all duration-300 hover:bg-[#662FFF] hover:text-white hover:border-0 bg-[#662FFF] text-white"
-        >
-          <span class="font-semibold text-sm leading-[21px]">1</span>
-        </button>
-        <button
-          type="button"
-          class="flex shrink-0 w-9 h-9 rounded-full items-center justify-center text-center transition-all duration-300 hover:bg-[#662FFF] hover:text-white hover:border-0 border border-[#060A23]"
-        >
-          <span class="font-semibold text-sm leading-[21px]">2</span>
-        </button>
-        <button
-          type="button"
-          class="flex shrink-0 w-9 h-9 rounded-full items-center justify-center text-center transition-all duration-300 hover:bg-[#662FFF] hover:text-white hover:border-0 border border-[#060A23]"
-        >
-          <span class="font-semibold text-sm leading-[21px]">3</span>
-        </button>
-      </div>
+      <Pagination
+        :currentPage="currentPage"
+        :totalPages="totalPages"
+        @page-changed="fetchEmployees"
+      />
     </section>
   </div>
 </template>

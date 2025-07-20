@@ -8,12 +8,17 @@ const authHeader = () => ({
   },
 });
 
-export const getEmployees = async () => {
+export const getEmployees = async (page = 1, pageSize = 5) => {
+  // const res = await axios.get(
+  //   `${API}/employees/?populate=division&populate=position&sort=updatedAt:desc`,
+  //   authHeader()
+  // );
+  // return res.data.data;
   const res = await axios.get(
-    `${API}/employees/?populate=division&populate=position&sort=updatedAt:desc`,
+    `${API}/employees/?populate=division&populate=position&sort=updatedAt:desc&pagination[page]=${page}&pagination[pageSize]=${pageSize}`,
     authHeader()
   );
-  return res.data.data;
+  return res.data;
 };
 
 export const getEmployeeById = async (id) => {
@@ -25,7 +30,7 @@ export const getEmployeeById = async (id) => {
 };
 
 export const createEmployee = async (employeeData) => {
-  console.log(employeeData);
+  // console.log(employeeData);
   const res = await axios.post(
     `${API}/employees/?populate=division&populate=position`,
     { data: employeeData },
