@@ -17,6 +17,12 @@ import DivisionView from "../pages/admin/division/DivisionView.vue";
 import DivisionCreate from "../pages/admin/division/DivisionCreate.vue";
 import DivisionEdit from "../pages/admin/division/DivisionEdit.vue";
 import DivisionDetail from "../pages/admin/division/DivisionDetail.vue";
+// POSITION
+import PositionLayout from "../layouts/authenticated/PositionLayout.vue";
+import PositionView from "../pages/admin/position/PositionView.vue";
+import PositionCreate from "../pages/admin/position/PositionCreate.vue";
+import PositionEdit from "../pages/admin/position/PositionEdit.vue";
+import PositionDetail from "../pages/admin/position/PositionDetail.vue";
 
 const routes = [
   {
@@ -90,6 +96,28 @@ const routes = [
           {
             path: "detail",
             component: DivisionDetail,
+          },
+        ],
+      },
+      {
+        path: "positions",
+        component: PositionLayout,
+        children: [
+          {
+            path: "",
+            component: PositionView,
+          },
+          {
+            path: "create",
+            component: PositionCreate,
+          },
+          {
+            path: "edit",
+            component: PositionEdit,
+          },
+          {
+            path: "detail",
+            component: PositionDetail,
           },
         ],
       },
