@@ -75,7 +75,7 @@ onMounted(async () => {
         :key="employee.id"
         class="flex items-center gap-5 card"
       >
-        <div class="relative rounded-[20px] bg-blue-500 flex shrink-0 w-20 h-20">
+        <div class="relative rounded-[20px] bg-blue-400 flex shrink-0 w-20 h-20">
           <div class="overflow-hidden">
             <div class="object-cover w-full h-full" />
           </div>

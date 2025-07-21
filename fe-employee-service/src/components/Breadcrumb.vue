@@ -6,12 +6,12 @@ const router = useRouter();
 const route = useRoute();
 
 const breadcrumbs = computed(() => {
-  const pathParts = route.path.split("/").filter(Boolean); // ['admin', 'positions', 'edit']
+  const pathParts = route.path.split("/").filter(Boolean);
 
   const crumbs = pathParts.map((part, index) => {
     const to = "/" + pathParts.slice(0, index + 1).join("/");
     return {
-      label: part.charAt(0).toUpperCase() + part.slice(1), // Capitalize
+      label: part.charAt(0).toUpperCase() + part.slice(1),
       to,
       isLast: index === pathParts.length - 1,
     };

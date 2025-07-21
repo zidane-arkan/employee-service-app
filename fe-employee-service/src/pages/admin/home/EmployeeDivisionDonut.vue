@@ -40,7 +40,7 @@ const chartOptions = {
 
 onMounted(async () => {
   const divisionData = await getEmployeeCountByDivision();
-  //   console.log("API Division Result:", divisionData);
+  
   chartData.value = {
     labels: Object.keys(divisionData),
     datasets: [

@@ -36,11 +36,9 @@ onMounted(loadUserData);
         id="profileButton"
         class="flex shrink-0 w-[50px] h-[50px] rounded-full overflow-hidden"
       >
-        <img
-          src="../assets/images/photos/photo-1.png"
-          class="w-full h-full object-cover"
-          alt="profile photos"
-        />
+        <span
+          class="w-full h-full object-cover bg-blue-400"
+        ></span>
       </button>
       <div id="ProfileDropdown" class="absolute top-full hidden group-hover:block">
         <ul

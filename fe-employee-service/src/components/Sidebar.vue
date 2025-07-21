@@ -4,8 +4,8 @@
   >
     <div class="flex w-full overflow-y-scroll scroll-container hide-scrollbar">
       <nav class="flex flex-col w-full h-fit p-[30px] gap-10 z-10">
-        <RouterLink to="/admin">
-          <img src="../assets/images/logos/logo.svg" alt="logo" />
+        <RouterLink to="/admin" class="flex items-center justify-center w-full">
+          <img src="../assets/images/logos/logo-2.svg" alt="logo" />
         </RouterLink>
         <ul class="flex flex-col gap-4">
           <p class="font-semibold text-xs leading-[18px] text-white">GENERAL</p>

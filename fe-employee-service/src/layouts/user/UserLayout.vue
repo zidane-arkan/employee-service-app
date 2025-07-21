@@ -15,7 +15,7 @@ import { RouterView } from "vue-router";
     </div>
     <nav class="flex items-center justify-between p-[30px]">
       <div class="flex items-center gap-[60px]">
-        <img src="../../assets/images/logos/logo.svg" class="flex shrink-0" alt="logo" />
+        <img src="../../assets/images/logos/logo-2.svg" class="flex shrink-0" alt="logo" />
       </div>
       <div class="flex items-center gap-3">
         <RouterLink
