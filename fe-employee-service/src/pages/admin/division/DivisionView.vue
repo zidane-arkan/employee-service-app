@@ -78,7 +78,7 @@ onMounted(async () => {
         :key="division.id"
         class="flex items-center gap-5 card"
       >
-        <div class="relative rounded-[20px] bg-indigo-500 flex shrink-0 w-20 h-20">
+        <div class="relative rounded-[20px] bg-[#FFCE56] flex shrink-0 w-20 h-20">
           <div class="overflow-hidden">
             <div class="object-cover w-full h-full" />
           </div>

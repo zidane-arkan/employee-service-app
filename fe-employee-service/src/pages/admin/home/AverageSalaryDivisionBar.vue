@@ -57,7 +57,6 @@ const chartOptions = {
 
 onMounted(async () => {
   const data = await getAverageSalaryByDivision();
-  
 
   const labels = Object.keys(data);
   const values = Object.values(data);
