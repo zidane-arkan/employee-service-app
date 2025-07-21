@@ -1,8 +1,9 @@
 <script setup>
-import { ref,onMounted } from "vue";
+import { ref, onMounted } from "vue";
 import { useRouter } from "vue-router";
 import { logout } from "../services/authService";
 import { getCurrentUser } from "../services/userService";
+import Breadcrumb from "./Breadcrumb.vue";
 
 const router = useRouter();
 const user = ref(null);
@@ -22,19 +23,9 @@ onMounted(loadUserData);
 
 <template>
   <div id="TopBar" class="flex items-center justify-between gap-[30px]">
-    <form
-      action=""
-      class="flex items-center w-full max-w-[450px] rounded-full gap-3 px-5 transition-all duration-300 focus-within:ring-2 focus-within:ring-[#662FFF]"
-    >
-      <!-- <input
-        type="text"
-        name="search"
-        id="search"
-        class="appearance-none outline-none w-full py-3 font-semibold placeholder:font-normal placeholder:text-[#838C9D]"
-        placeholder="Search course, student, other file..."
-      />
-      <img src="assets/images/icons/search-normal.svg" class="w-6 h-6" alt="icon" /> -->
-    </form>
+    <!-- BREADCRUMPS -->
+    <Breadcrumb />
+    <!-- RIGHT BAR -->
     <div class="relative flex items-center justify-end gap-[14px] group">
       <div class="text-right">
         <p class="font-semibold capitalize">{{ user?.username || "User" }}</p>
