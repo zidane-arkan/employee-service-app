@@ -122,9 +122,9 @@ Aplikasi Employee Self Service berbasis web untuk mengelola data karyawan, divis
 
 **Setelah Dinormalisasi (3 Tabel):**
 
-- `employees`
-- `divisions`
-- `positions`
+- `employee`
+- `division`
+- `position`
 
 Relasi: Employee memiliki foreign key ke division dan position.
 
@@ -169,9 +169,9 @@ npm run develop
 
 > Strapi akan berjalan di `http://localhost:1337/admin`
 
-### 📂 Ekspor File SQL (Opsional)
-
-Jika diminta hasil normalisasi dalam bentuk file SQL:
+### 📂 Ekspor File SQL
+#### File ada didalam folder db
+hasil normalisasi :
 
 ```bash
 pg_dump -U your_postgres_user -d employee-service-db -f db_employee_service.sql
@@ -254,5 +254,5 @@ Data diambil dari Strapi melalui endpoint.
 ## 👤 Author
 
 **Muhammad Zidane Arkan**
-GitHub: [github.com/yourusername](https://github.com/yourusername)
-Email: [zidane@example.com](mailto:zidane@example.com)
+GitHub: [github.com/zidane-arkan](https://github.com/zidane-arkan)
+Email: [zidark897@gmail.com](mailto:zidark897@gmail.com)
