@@ -50,7 +50,6 @@ const chartOptions = {
 
 onMounted(async () => {
   const data = await getSalaryPerPosition();
-  console.log("Salary per Position:", data);
 
   const labels = Object.keys(data);
   const values = Object.values(data).map(Number); // Pastikan tipe number

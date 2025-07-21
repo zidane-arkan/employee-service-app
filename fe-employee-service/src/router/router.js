@@ -1,9 +1,10 @@
 import { createWebHistory, createRouter } from "vue-router";
 
+import AdminLayout from "../layouts/authenticated/AdminLayout.vue";
 import UserLayout from "../layouts/user/UserLayout.vue";
+import AccountView from "../pages/admin/account/AccountView.vue";
 import RegisterView from "../pages/auth/RegisterView.vue";
 import LoginView from "../pages/auth/LoginView.vue";
-import AdminLayout from "../layouts/authenticated/AdminLayout.vue";
 import HomeView from "../pages/admin/home/HomeView.vue";
 // EMPLOYEE
 import EmployeeLayout from "../layouts/authenticated/EmployeeLayout.vue";
@@ -120,6 +121,11 @@ const routes = [
             component: PositionDetail,
           },
         ],
+      },
+      {
+        path: "account",
+        name: "AccountView",
+        component: AccountView,
       },
     ],
   },

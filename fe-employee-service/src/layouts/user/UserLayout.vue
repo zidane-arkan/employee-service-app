@@ -23,7 +23,7 @@ import { RouterView } from "vue-router";
           active-class="bg-[#662FFF] border-[#8661EE] shadow-[-10px_-6px_10px_0_#7F33FF_inset]"
           class="cursor-pointer flex items-center gap-3 w-fit rounded-full border p-[14px_20px] transition-all duration-300 hover:bg-[#662FFF] hover:border-[#8661EE] hover:shadow-[-10px_-6px_10px_0_#7F33FF_inset] bg-[#070B24] border-[#24283E] "
         >
-          <span class="font-semibold text-white">My Dashboard</span>
+          <span class="font-semibold text-white">Sign In</span>
         </RouterLink>
 
         <RouterLink

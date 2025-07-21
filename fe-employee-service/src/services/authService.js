@@ -18,3 +18,9 @@ export const login = async ({ identifier, password }) => {
   });
   return res.data;
 };
+
+export const logout = () => {
+  localStorage.removeItem("jwt");
+  localStorage.removeItem("user");
+  console.log("User logged out successfully.");
+};
