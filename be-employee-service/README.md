@@ -1,3 +1,88 @@
+# 🛠️ Backend – `be-employee-service`
+
+## ⚙️ Spesifikasi
+
+* **Framework**: Strapi v5.18.1
+* **Database**: PostgreSQL
+* **Autentikasi**: JWT (Users & Permissions plugin)
+* **Seed Data**: Ya
+* **Struktur Tabel**: Sudah dinormalisasi
+
+## 📂 Struktur Database Hasil Normalisasi
+
+**Sebelum Dinormalisasi (Tabel Tunggal):**
+
+| ID_Karyawan | Nama_Karyawan | Division | Position       | Salary  |
+| ----------- | ------------- | -------- | -------------- | ------- |
+| 1           | Mei           | IT       | Frontend Dev   | 7000000 |
+| 2           | Jupei         | IT       | Backend Dev    | 8500000 |
+| 3           | Vira          | HRD      | HR Specialist  | 6000000 |
+| 4           | Nano          | IT       | DevOps         | 6500000 |
+| 5           | Mais          | R&D      | R&D Staff      | 5500000 |
+| 6           | Pumkin        | CS       | Product Expert | 7500000 |
+| 7           | Soi           | IT       | Frontend Dev   | 7000000 |
+| 8           | Horik         | IT       | Backend Dev    | 8500000 |
+| 9           | Vani          | R&D      | R&D Staff      | 5500000 |
+| 10          | Satya         | IT       | Backend Dev    | 8500000 |
+
+**Setelah Dinormalisasi (3 Tabel):**
+
+* `employee`
+* `division`
+* `position`
+
+Relasi: Employee memiliki foreign key ke division dan position.
+
+## 🔧 Cara Menjalankan Backend
+
+1. Masuk ke folder:
+
+```bash
+cd be-employee-service
+```
+
+2. Install dependencies:
+
+```bash
+npm install
+```
+
+3. Buat file `.env` dari `.env.example`:
+
+```bash
+cp .env.example .env
+```
+
+4. Edit file `.env` dan isi:
+
+```env
+DATABASE_CLIENT=postgres
+DATABASE_HOST=127.0.0.1
+DATABASE_PORT=5432
+DATABASE_NAME=employee-service-db
+DATABASE_USERNAME=your_postgres_user
+DATABASE_PASSWORD=your_postgres_password
+DATABASE_SSL=false
+JWT_SECRET=your_secret_key
+```
+
+5. Jalankan Strapi:
+
+```bash
+npm run develop
+```
+
+> Strapi akan berjalan di `http://localhost:1337/admin`
+
+## 📂 Ekspor File SQL (Opsional)
+
+Hasil normalisasi dalam bentuk file SQL:
+
+```bash
+pg_dump -U your_postgres_user -d employee-service-db -f db_employee_service.sql
+```
+
+
 # 🚀 Getting started with Strapi
 
 Strapi comes with a full featured [Command Line Interface](https://docs.strapi.io/dev-docs/cli) (CLI) which lets you scaffold and manage your project in seconds.
