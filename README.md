@@ -87,7 +87,7 @@ Contoh Tabel Awal sebagai berikut:
 
 ---
 
-# 🧑‍💼 Employee Self Service App
+# 🧑‍💼 Employee Service App
 
 Aplikasi Employee Self Service berbasis web untuk mengelola data karyawan, divisi, dan posisi dengan sistem autentikasi JWT serta visualisasi data interaktif.
 
