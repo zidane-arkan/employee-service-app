@@ -75,7 +75,6 @@ export default {
     async handleLogin() {
       try {
         const res = await login(this.form);
-        console.log(res);
         localStorage.setItem("jwt", res.jwt);
         localStorage.setItem("user", JSON.stringify(res.user));
         alert(`Selamat datang, ${res.user.username}`);

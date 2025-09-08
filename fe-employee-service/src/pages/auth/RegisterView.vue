@@ -99,6 +99,7 @@ export default {
       try {
         const res = await register(this.form);
         localStorage.setItem("jwt", res.jwt);
+        localStorage.setItem("user", JSON.stringify(res.user));
         alert("Registrasi berhasil!");
         this.$router.push("/admin");
       } catch (err) {
