@@ -2,11 +2,11 @@
 
 Dibuat sebagai bagian dari test
 
-# 1. Jelaskan apa itu normalisasi database dan berikan contoh tabel sebelum dan sesudah dinormalisasi
+# Jelaskan apa itu normalisasi database dan berikan contoh tabel sebelum dan sesudah dinormalisasi
 
 ## Apa itu Normalisasi Database?
 
-### Kasus: Aplikasi ESS (Employee Self Service)
+### Aplikasi ESS (Employee Self Service)
 
 Normalisasi adalah merupakan sebuah proses menyusun struktur tabel dalam database agar data tidak duplikat, lebh rapi, dan mudah dikelola. Dalam konteks aplikasi ESS (Employee Self Service), normalisasi membantu memisahkan data karyawan, jabatan, dan divisi agar lebih fleksibel dan konsisten.
 
@@ -87,7 +87,7 @@ Contoh Tabel Awal sebagai berikut:
 
 ---
 
-# 🧑‍💼 Employee Self Service App
+# 🧑‍💼 Employee Service App
 
 Aplikasi Employee Self Service berbasis web untuk mengelola data karyawan, divisi, dan posisi dengan sistem autentikasi JWT serta visualisasi data interaktif.
 
